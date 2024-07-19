@@ -26,7 +26,7 @@ export default function RecipePage() {
   return (
     <main className="">
       <div className='text-center'>
-        <div className='flex justify-center inline-block space-y-12'><Image src= {Cook} width={100} height={100}/><h1 className='font-Burtons text-large sm:text-8xl '>Cookbook</h1></div>
+        <div className='flex justify-center inline-block space-y-12'><Image alt=''src= {Cook} width={100} height={100}/><h1 className='font-Burtons text-large sm:text-8xl '>Cookbook</h1></div>
         <p className='font-cevaet'>Welcome!! Here are few Dishes... </p>
       </div>
       <div className="text-center">
