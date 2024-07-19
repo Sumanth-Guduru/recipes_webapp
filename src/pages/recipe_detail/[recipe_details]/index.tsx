@@ -31,7 +31,7 @@ export default function RecipeDetail() {
     const fetchRecipeDetails = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://18.217.159.5:8000/api/recipes/${recipeId}`);
+        const response = await fetch(`https://dpwwvo4rd5yu5.cloudfront.net/api/recipes/${recipeId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch recipe');
         }

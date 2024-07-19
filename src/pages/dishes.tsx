@@ -18,7 +18,7 @@ export default function RecipePage() {
  
   useEffect(() => {
     const fetchRecipes = async () => {
-      const response = await fetch('http://18.217.159.5:8000/api/recipes/');
+      const response = await fetch('https://dpwwvo4rd5yu5.cloudfront.net/api/recipes/');
       const data = await response.json();
       console.log(data);
       setRecipes(data.slice(0, 8));
