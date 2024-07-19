@@ -4,12 +4,16 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Card, CardBody, CardFooter } from '@nextui-org/card';
 import Cook from '../app/images/cooking (1).png';
-
+type Recipe = {
+  idMeal: string;
+  strMeal: string;
+  strInstructions: string;
+};
 
 export default function RecipePage() {
   const [recipes, setRecipes] = useState([]);
   const [allRecipes, setAllRecipes] = useState([]);
-
+ 
   useEffect(() => {
     const fetchRecipes = async () => {
       // const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
