@@ -1,3 +1,4 @@
+
 'use client';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -20,15 +21,12 @@ export default function RecipeDetail() {
     // Extract recipe ID from pathname
     const segments = recipe_details.split('/');
     const recipeId = segments.pop(); // Extracts the last segment, which should be the recipe ID
-    console.log(recipeId);
 
     if (!recipeId) {
       setError('Recipe ID not found in URL');
       setLoading(false);
       return;
     }
-   
-       
 
     const fetchRecipeDetails = async () => {
       try {
@@ -38,7 +36,6 @@ export default function RecipeDetail() {
           throw new Error('Failed to fetch recipe');
         }
         const data = await response.json();
-        console.log(data);
         if (data.meals && data.meals.length > 0) {
           const fetchedRecipe: Recipe = {
             idMeal: data.meals[0].idMeal,
@@ -50,7 +47,11 @@ export default function RecipeDetail() {
           throw new Error('Recipe not found');
         }
       } catch (error) {
-        setError(error.message);
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError('An unknown error occurred');
+        }
       } finally {
         setLoading(false);
       }
