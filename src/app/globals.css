@@ -31,3 +31,15 @@ body {
     text-wrap: balance;
   }
 }
+@font-face {
+  font-family: "lemone";
+  src: url('/Lemon.otf');
+}
+@font-face {
+  font-family: "Burtons";
+  src: url('/Burtons.otf');
+}
+@font-face {
+  font-family: "cevaet";
+  src: url('/cevaet.ttf');
+}
