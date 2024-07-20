@@ -60,6 +60,7 @@ export default function RecipePage() {
             </Card>
           </Link>
         ))}
+       
       </div>
     </main>
   );
