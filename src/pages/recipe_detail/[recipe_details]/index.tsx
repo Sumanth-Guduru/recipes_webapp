@@ -31,20 +31,14 @@ export default function RecipeDetail() {
     const fetchRecipeDetails = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`https://dpwwvo4rd5yu5.cloudfront.net/api/recipes/${recipeId}/`);
+        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch recipe');
         }
         const data = await response.json();
 
-        if (data) {
-          const fetchedRecipe: Recipe = {
-            idMeal: data.idMeal,
-            strMeal: data.strMeal,
-            strInstructions: data.strInstructions,
-            strMealThumb: data.strMealThumb,
-            strYoutube: data.strYoutube,
-          };
+        if (data && data.meals && data.meals.length > 0) {
+          const fetchedRecipe: Recipe = data.meals[0]; // Access the first meal in the array
           setRecipe(fetchedRecipe);
         } else {
           throw new Error('Recipe not found');
@@ -80,7 +74,6 @@ export default function RecipeDetail() {
     display: 'flex',
     justifyContent: 'center',
     padding: '10px',
-    
   };
 
   const cardStyle: CSSProperties = {
@@ -90,7 +83,6 @@ export default function RecipeDetail() {
     borderRadius: '10px',
     margin: '10px',
     maxWidth: '600px',
-
   };
 
   const imageStyle: CSSProperties = {
@@ -104,18 +96,18 @@ export default function RecipeDetail() {
   const headingStyle: CSSProperties = {
     fontSize: '1.875rem', // text-3xl
     fontWeight: 'bold',
-    marginBottom: '16px' // mb-4
+    marginBottom: '16px', // mb-4
   };
 
   const textStyle: CSSProperties = {
     fontSize: '1.125rem', // text-lg
     marginBottom: '16px', // mb-4
-    textAlign: 'center' as CSSProperties['textAlign']
+    textAlign: 'center' as CSSProperties['textAlign'],
   };
 
   const linkStyle: CSSProperties = {
     color: '#3b82f6', // text-blue-500
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   };
 
   return (

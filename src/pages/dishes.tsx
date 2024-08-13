@@ -18,15 +18,22 @@ export default function RecipePage() {
  
   useEffect(() => {
     const fetchRecipes = async () => {
-      const response = await fetch('https://dpwwvo4rd5yu5.cloudfront.net/api/recipes/');
+      const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
       const data = await response.json();
       console.log(data);
-      setRecipes(data.slice(0, 8));
-      setAllRecipes(data); // Adjust if necessary based on the actual data structure
+  
+      if (data.meals) {
+        setRecipes(data.meals.slice(0, 8)); // Sets the first 8 recipes
+        setAllRecipes(data.meals); // Sets all the recipes if needed
+      } else {
+        setRecipes([]); // Handles the case where no recipes are returned
+        setAllRecipes([]); // Sets an empty array for allRecipes as well
+      }
     };
-
+  
     fetchRecipes();
   }, []);
+  
 
   return (
     <main className="">
